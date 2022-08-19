@@ -1,7 +1,7 @@
 from random import choices
 from django.db import models
 from django.forms import DateTimeField
-# from tkinter import CASCADE
+from tkinter import CASCADE
 from django.utils import timezone
 
 from django.db import models
@@ -58,9 +58,9 @@ class Transaction(models.Model):
     transaction_type=models.CharField(max_length=10, choices=TRANSACTION_CHOICES,null=True)
     transaction_charge=models.IntegerField()
     transaction_date=models.DateTimeField(default=timezone.now)
-    receipt=models.ForeignKey('Receipts',on_delete=models.CASCADE, related_name='Transaction_receipt')
-    original_account=models.ForeignKey('Account', on_delete=models.CASCADE, related_name='Transaction_original_account')
-    destination_account=models.ForeignKey('Account', on_delete=models.CASCADE, related_name='Transaction_destination_account')
+    # receipt=models.ForeignKey('Receipts',on_delete=models.CASCADE, related_name='Transaction_receipt')
+    # original_account=models.ForeignKey('Account', on_delete=models.CASCADE, related_name='Transaction_original_account')
+    # destination_account=models.ForeignKey('Account', on_delete=models.CASCADE, related_name='Transaction_destination_account')
 
 class Card(models.Model):
     date_Issued=models.DateTimeField(default=timezone.now)
@@ -83,7 +83,7 @@ class Card(models.Model):
     account=models.ForeignKey('Account', on_delete=models.CASCADE, related_name ='Card_account')     
 
 class ThirdParty(models.Model):
-    account=models.ForeignKey('Account', on_delete=models.CASCADE, related_name ='ThirdParty_account')
+    # account=models.ForeignKey('Account', on_delete=models.CASCADE, related_name ='ThirdParty_account')
     name=models. CharField(max_length=15,null=True)
     thirdparty_id=models.CharField(max_length=10,null=True)
     phone_Number=models.IntegerField()
@@ -104,7 +104,7 @@ class Receipts(models.Model):
     receipt_type=models.CharField(max_length=25, null=True)
     receipt_date=models.DateTimeField(default=timezone.now)
     recipt_number=models.CharField(max_length=25, null=True)
-    account=models.ForeignKey('Account', on_delete=models.CASCADE, related_name ='Receipts_account')
+
     total_Amount=models.IntegerField(default=0)
     transaction=models.ForeignKey('Transaction', on_delete=models.CASCADE, related_name ='Receipts_transaction')
     recipt_File=models.FileField(upload_to='wallet/')
