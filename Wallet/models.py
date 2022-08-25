@@ -48,7 +48,7 @@ class Account(models.Model):
     wallet=models.ForeignKey('Wallet',on_delete=models.CASCADE, related_name ='Account_wallet')
 
 class Transaction(models.Model):
-    transaction_ref=models.CharField(max_length=255,null=True)
+    # transaction_ref=models.CharField(max_length=255,null=True)
     wallet=models.ForeignKey('Wallet', on_delete=models.CASCADE, related_name   = 'Transaction_wallet')
     transaction_amount=models.IntegerField()
     TRANSACTION_CHOICES = (
@@ -80,7 +80,7 @@ class Card(models.Model):
     card_status= models.CharField(max_length=1, choices=STATUS_CHOICES,null=True)
     cvv_security=models.IntegerField()
     wallet=models.ForeignKey('Wallet', on_delete=models.CASCADE, related_name ='Card_wallet')
-    account=models.ForeignKey('Account', on_delete=models.CASCADE, related_name ='Card_account')     
+    # account=models.ForeignKey('Account', on_delete=models.CASCADE, related_name ='Card_account')     
 
 class ThirdParty(models.Model):
     # account=models.ForeignKey('Account', on_delete=models.CASCADE, related_name ='ThirdParty_account')
