@@ -1,0 +1,14 @@
+<table id="table">
+    <tr>
+        <th>amout</th>
+        <th>country_of_origin</th>
+    
+    </tr>
+    {% for Currency in currencys%}
+    <tr>
+        <td>{{Currency.amount}}</td>
+        <td>{{Currency.country_of_origin}}</td>
+    
+    </tr>
+    {% endfor %}
+    </table>
